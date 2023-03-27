@@ -25,3 +25,6 @@ def main():
         ip_address = generate_random_ip()
         action = check_firewall_rules(ip_address, firewall_rules)
         print(f"IP: {ip_address}, Action: {action}")
+
+if __name__ == "__main__":
+    main()
