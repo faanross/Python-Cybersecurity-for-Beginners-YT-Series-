@@ -2,7 +2,7 @@ import random
 
 def generate_random_ip():
     """Generate a random IP address."""
-    return f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+    return f"192.168.1.{random.randint(0, 20)}"
 
 def check_firewall_rules(ip, rules):
     """Check if the IP address matches any firewall rule and return the action."""
@@ -14,10 +14,10 @@ def check_firewall_rules(ip, rules):
 def main():
     # Define the firewall rules (key: IP address, value: action)
     firewall_rules = {
-        "192.168.1.10": "allow",
-        "192.168.1.20": "block",
-        "10.0.0.5": "allow",
-        "10.0.0.6": "block"
+        "192.168.1.1": "block",
+        "192.168.1.4": "block",
+        "192.168.1.9": "block",
+        "192.168.1.13": "block"
     }
 
       # Simulate network traffic
