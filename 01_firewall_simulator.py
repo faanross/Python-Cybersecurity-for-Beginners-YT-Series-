@@ -10,3 +10,12 @@ def check_firewall_rules(ip, rules):
         if ip == rule_ip:
             return action
     return "allow"  # Default action if no rule matches
+
+def main():
+    # Define the firewall rules (key: IP address, value: action)
+    firewall_rules = {
+        "192.168.1.10": "allow",
+        "192.168.1.20": "block",
+        "10.0.0.5": "allow",
+        "10.0.0.6": "block"
+    }
