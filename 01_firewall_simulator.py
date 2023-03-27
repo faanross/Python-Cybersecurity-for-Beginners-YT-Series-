@@ -19,3 +19,9 @@ def main():
         "10.0.0.5": "allow",
         "10.0.0.6": "block"
     }
+
+      # Simulate network traffic
+    for _ in range(10):
+        ip_address = generate_random_ip()
+        action = check_firewall_rules(ip_address, firewall_rules)
+        print(f"IP: {ip_address}, Action: {action}")
