@@ -18,3 +18,6 @@ def packet_callback(packet):
             if packet_rate > THRESHOLD:
                 print(f"Blocking IP: {ip}, packet rate: {packet_rate}")
                 os.system(f"iptables -A INPUT -s {ip} -j DROP")
+
+        packet_count.clear()
+        start_time = current_time
