@@ -10,7 +10,7 @@ def packet_callback(packet):
     src_ip = packet[IP].src
     packet_count[src_ip] += 1
 
-      current_time = time.time()
+    current_time = time.time()
     time_interval = current_time - start_time
     if time_interval >= 1:
         for ip, count in packet_count.items():
