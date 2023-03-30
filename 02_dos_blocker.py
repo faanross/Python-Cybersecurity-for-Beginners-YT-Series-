@@ -26,3 +26,7 @@ if __name__ == "__main__":
     if os.geteuid() != 0:
         print("This script requires root privileges.")
         sys.exit(1)
+
+    packet_count = defaultdict(int)
+    start_time = time.time()
+
