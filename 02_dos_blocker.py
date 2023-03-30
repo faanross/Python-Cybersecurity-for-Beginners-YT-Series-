@@ -30,3 +30,6 @@ if __name__ == "__main__":
     packet_count = defaultdict(int)
     start_time = time.time()
 
+    print("Monitoring network traffic...")
+    sniff(filter="ip", prn=packet_callback)
+
