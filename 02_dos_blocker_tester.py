@@ -8,3 +8,11 @@ INTERFACE = "eth0"  # Replace with your network interface
 def send_packets(target_ip, interface):
     packet = Ether() / IP(dst=target_ip) / UDP()
     start_time = time.time()
+
+    while True:
+        sendp(packet, iface=interface)
+        current_time = time.time()
+        time_interval = current_time - start_time
+
+        if time_interval >= 1:
+            break
