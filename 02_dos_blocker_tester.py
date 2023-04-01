@@ -1,15 +1,17 @@
 import sys
-import time
-from scapy.all import Ether, IP, UDP, sendp
+from scapy.all import Ether, IP, TCP, sendp
 
 TARGET_IP = "192.168.2.20"  # Replace with the target IP address
 INTERFACE = "Ethernet"  # Replace with your network interface
 
 def send_packets(target_ip, interface):
-    packet = Ether() / IP(dst=target_ip) / UDP()
+    packet = Ether() / IP(dst=target_ip) / TCP()
 
-    while True:
-        sendp(packet, iface=interface, loop=1, inter=0.005)
+    try:
+        while True:
+            sendp(packet, iface=interface, loop=1, inter=0.005)
+    except KeyboardInterrupt:
+        print("\nStopping packet sending...")
 
 if __name__ == "__main__":
     if sys.version_info[0] < 3:
