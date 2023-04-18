@@ -19,3 +19,16 @@ def is_nimda_worm(packet):
         payload = packet[TCP].payload
         return "GET /scripts/root.exe" in str(payload)
     return False
+
+# Log events to a file
+def log_event(message):
+    log_folder = "logs"
+    os.makedirs(log_folder, exist_ok=True)
+    timestamp = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
+    log_file = os.path.join(log_folder, f"log_{timestamp}.txt")
+    
+    with open(log_file, "a") as file:
+        file.write(f"{message}\n")
+
+def packet_callback(packet):
+    src_ip = packet[IP].src
