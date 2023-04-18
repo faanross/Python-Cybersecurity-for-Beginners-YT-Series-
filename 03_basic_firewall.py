@@ -32,3 +32,13 @@ def log_event(message):
 
 def packet_callback(packet):
     src_ip = packet[IP].src
+
+      # Check if IP is in the whitelist
+    if src_ip in whitelist_ips:
+        return
+
+    # Check if IP is in the blacklist
+    if src_ip in blacklist_ips:
+        os.system(f"iptables -A INPUT -s {src_ip} -j DROP")
+        log_event(f"Blocking blacklisted IP: {src_ip}")
+        return
