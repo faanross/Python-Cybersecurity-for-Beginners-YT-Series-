@@ -55,7 +55,7 @@ def packet_callback(packet):
     current_time = time.time()
     time_interval = current_time - start_time[0]
 
-       if time_interval >= 1:
+    if time_interval >= 1:
         for ip, count in packet_count.items():
             packet_rate = count / time_interval
 
