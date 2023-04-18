@@ -67,3 +67,19 @@ def packet_callback(packet):
 
         packet_count.clear()
         start_time[0] = current_time
+
+if __name__ == "__main__":
+    if os.geteuid() != 0:
+        print("This script requires root privileges.")
+        sys.exit(1)
+
+    # Import whitelist and blacklist IPs
+    whitelist_ips = read_ip_file("whitelist.txt")
+    blacklist_ips = read_ip_file("blacklist.txt")
+
+    packet_count = defaultdict(int)
+    start_time = [time.time()]
+    blocked_ips = set()
+
+    print("Monitoring network traffic...")
+    sniff(filter="ip", prn=packet_callback)
