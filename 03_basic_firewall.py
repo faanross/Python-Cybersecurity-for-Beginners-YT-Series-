@@ -42,3 +42,15 @@ def packet_callback(packet):
         os.system(f"iptables -A INPUT -s {src_ip} -j DROP")
         log_event(f"Blocking blacklisted IP: {src_ip}")
         return
+    
+      # Check for Nimda worm signature
+    if is_nimda_worm(packet):
+        print(f"Blocking Nimda source IP: {src_ip}")
+        os.system(f"iptables -A INPUT -s {src_ip} -j DROP")
+        log_event(f"Blocking Nimda source IP: {src_ip}")
+        return
+
+    packet_count[src_ip] += 1
+
+    current_time = time.time()
+    time_interval = current_time - start_time[0]
