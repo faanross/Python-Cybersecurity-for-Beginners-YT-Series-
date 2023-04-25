@@ -10,7 +10,6 @@ def main():
     subnet = sys.argv[1]
     mask = int(sys.argv[2])
 
-    # Run scanner_02
     live_hosts = scanner_02.ping_sweep(subnet, str(mask))
     print("Ping sweep completed.\n")
 
